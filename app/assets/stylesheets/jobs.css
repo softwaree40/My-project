@@ -1,0 +1,73 @@
+// Place all the styles related to the Jobs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+// Place all the styles related to the jobs controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+table#t01 tr:nth-child(even) {
+    background-color: #eee;
+  }
+  table#t01 tr:nth-child(odd) {
+    background-color: #fff;
+  }
+  table#t01 th {
+    color: white;
+    background-color: black;
+  }
+  .log{
+    text-align: end;
+    background-color: black;
+    width: auto;
+    text: bold;
+  }
+  h1{
+    background-color: gray;
+    text-overflow: clip;
+    border: 2px solid blueviolet;
+    border-radius: 5px;
+  }
+
+#container{
+  padding: 35px;
+  border: 1px solid gray; 
+  background-color: gray;
+
+}
+.sty{
+  padding: 35px;
+  border: 1px solid gray;
+
+}
+.colst{
+  color:blue;
+}
+.logt{
+  text-align: end;
+
+}
+#content{
+  background-color: gray;
+    text-overflow: clip;
+    border: 2px solid blueviolet;
+    border-radius: 5px;
+}
+ul {
+  list-style-type: none;
+ }
+ 
+ table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}

@@ -1,0 +1,22 @@
+<h1>Sign Up</h1>
+<link type="stylesheets" href="sytlesheets/jobs.css">
+<%=form_for @user do |f|%>
+
+<div id="container">
+  <div class="email">
+   <%= f.label :email%><br>
+   <p><%= f.text_field :email,placeholder: "Enter your email",autocomplete: "off"%></p><br>
+  </div>
+  <div class="pwd">
+   <%= f.label :password%><br>
+   <p><%= f.password_field :password,placeholder: "Enter your password",autocomplete: "off"%></p><br>
+  </div>
+  <div class="name">
+   <%= f.label :name%><br>
+   <p><%= f.text_field :name,placeholder: "Enter your name",autocomplete: "off"%></p>
+   </div>
+</div>
+  <%= f.submit "Sign up"%>
+  
+<%end%>
+<%= button_to "Back",login_path, method: :get%>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<table >
+  <tr>
+    <th>title</th>
+    <th>Description</th>
+    <th>Company</th>
+    <th>Url</th>
+  </tr>
+  <tr>
+    <td><%=@job.title%></td>
+    <td><%= @job.description%></td>
+    <td><%= @job.company%></td>
+    <td><%= @job.url%></td>
+  </tr>
+</table><br>
+</body>
+</html>
+<%= link_to "Edit Job",edit_category_job_path(@job.category,@job)%>
+<%= link_to "Delete", category_job_path(@job),method: :delete%>
+<h2>Job Updated: <%=time_ago_in_words @job.created_at%></h2>
+<p><%=notice%></p><br>

@@ -1,0 +1,9 @@
+<% if logged_in? %>
+    <h1>You are Logged In, <%= current_user.name %></h1>
+<%end%>
+
+<% @categorys.each do |category|%>
+<ul>
+   <li><%=link_to category.name,category_jobs_path(category)%></li><br>
+</ul>
+<%end%>

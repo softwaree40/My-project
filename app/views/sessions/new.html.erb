@@ -1,0 +1,16 @@
+<h1>Login</h1>
+ <div class="sty">
+   <%= form_tag '/login' do %>
+   <div>
+   <%= label_tag :email%>
+   <%= text_field_tag :email%>
+   </div>
+   <br>
+   <div>
+   <%= label_tag :password%>
+   <%= password_field_tag :password%>
+   </div>
+   <%= submit_tag "Login"%>
+<%end%>
+<%=link_to "Github Login","/auth/github", class:"colst"%>
+<%= button_to "Signup",new_user_path, method: :get%>

@@ -1,0 +1,4 @@
+<h1>Edit Job</h>
+<%= render 'form' %>
+<%= button_to "Back", categories_path, method: :get %>
+<h2>Edit time: <%=time_ago_in_words @job.created_at%></h2>

@@ -1,11 +1,12 @@
 class User < ApplicationRecord
+     has_many :jobs
+     has_many :categories, :through => :jobs
     has_secure_password
     validates :email, presence:true 
     validates :email, uniqueness:true
     validates :name, presence:true 
     validates :name, uniqueness:true
     validates :company,presence:true
-    validates :company,uniqueness:true
     validates :url,  presence:true
 
     def self.find_or_create_by_omniauth(auth_hash)

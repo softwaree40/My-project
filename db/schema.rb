@@ -21,17 +21,18 @@ ActiveRecord::Schema.define(version: 2020_04_16_065155) do
   create_table "jobs", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.string "company"
+    t.string "organization"
     t.string "url"
     t.integer "category_id"
+    t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "password_digest"
     t.string "email"
+    t.string "password_digest"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

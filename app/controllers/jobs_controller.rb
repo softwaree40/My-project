@@ -1,21 +1,25 @@
 class JobsController < ApplicationController
     before_action :authentication_required
+    before_action :category_params, except: [:destroy]
+    before_action :find_jobs, except: [:index,:new,:create]
+
   
     def index
-      @category = Category.find(params[:category_id])
+      
       @jobs = @category.jobs
     end
     
     def new
-      @category = Category.find_by(id: params[:category_id])
+      
       @job = @category.jobs.build
     end
 
     def create
         #binding.pry
         
-        @category = Category.find(params[:category_id])
+        
         @job = @category.jobs.build(jobs_params)
+        @job.user = current_user
        if @job.save 
         #binding.pry
           redirect_to category_jobs_path(@category), notice: "Created successfully"
@@ -27,22 +31,25 @@ class JobsController < ApplicationController
     
     def show
       #binding.pry
-      @category = Category.find(params[:category_id])
-      @job = Job.find_by(id: params[:id])
+      
+     
       
      
     end
 
-    def edit 
-      
-      @category = Category.find(params[:category_id])
-      @job = Job.find_by(id: params[:id])
+    def edit
+      if current_user != @job.user
+        redirect_to category_jobs_path(@job.category, @job)
+      end
+     
     end
 
     def update
+      if current_user != @job.user
+        redirect_to category_jobs_path(@job.category, @job)
+      end
       
-      @category = Category.find(params[:category_id])
-      @job = Job.find_by(id: params[:id])
+      
         if @job.update(jobs_params)
           redirect_to category_jobs_path(@job.category, @job) ,notice: "Information updated successful"
         else
@@ -51,19 +58,34 @@ class JobsController < ApplicationController
       end
 
       def destroy 
-      
-        @job = Job.find_by(id: params[:id])
-        @job.destroy
+        if current_user != @job.user
+          redirect_to category_jobs_path(@job.category, @job)
+        else  
+          @job.destroy
+          redirect_to category_jobs_path(@job.category, @job)
+          flash.notice = "Job deleted successful"
+        end
         
-        flash.notice = "Job deleted successful"
-        redirect_to category_jobs_path(@job.category, @job) 
+        
       end
+
+
+
+
+
+
 
     private
     
   def jobs_params
-      params.require(:job).permit(:title,:description,:url,:organization,:category_id)
+      params.require(:job).permit(:title,:description,:url,:company,:category_id)
  end
-  
+  def category_params
+    @category = Category.find_by(id: params[:category_id])
+
+  end
+  def find_jobs
+    @job = Job.find_by(id: params[:id])
+  end
   
 end

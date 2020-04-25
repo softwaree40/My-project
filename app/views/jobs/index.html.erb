@@ -1,7 +1,10 @@
-<h1>Jobs for <%=@category.name%></h1>
-<%= button_to "Create a new job for the #{@category.name} category", new_category_job_path(@category),method: :get%>
-<% @jobs.each do |job|%>
-<ul>
-<li><%=link_to job.title, category_job_path(@category,job)%></li>
+
+   <h1>Jobs for <%=@category.name%></h1>
+   <div class="body">
+    <%= button_to "Create a new job for the #{@category.name} category", new_category_job_path(@category),method: :get%>
+    <% @jobs.each do |job|%>
+    <ul>
+    <li><%=link_to job.title, category_job_path(@category,job)%></li>
 </ul>
+</div>
 <%end%>

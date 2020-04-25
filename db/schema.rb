@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2020_04_16_065155) do
   create_table "jobs", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.string "organization"
+    t.string "company"
     t.string "url"
     t.integer "category_id"
     t.integer "user_id"

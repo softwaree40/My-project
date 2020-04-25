@@ -1,7 +1,7 @@
 class Job < ApplicationRecord
     belongs_to :category
-    belong_to :user
-    validates_presence_of :title,:description,:company,:url,:category_id
+    belongs_to :user,:optional => true
+    validates :title,:description,:url,:company, :presence => true 
     def self.desc_order
         self.all.order("created_at DESC")
  
